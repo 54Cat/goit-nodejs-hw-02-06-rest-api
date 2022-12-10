@@ -41,7 +41,7 @@ const loginSchema = Joi.object({
   token: Joi.boolean()
 })
 
-const schemas = {
+const userJoiSchemas = {
   singupSchema,
   loginSchema
 }
@@ -50,5 +50,5 @@ const User = model("user", userSchema)
 
 module.exports = {
   User,
-  schemas
+  userJoiSchemas
 }

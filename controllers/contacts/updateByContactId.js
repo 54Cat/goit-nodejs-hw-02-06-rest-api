@@ -1,6 +1,6 @@
-const { updateByContactId } = require('../models/contacts')
-const { addSchema } = require("../schemas/contacts")
-const { HttpError } = require("../helpers")
+const { updateByContactId } = require('../../models/contacts')
+const { addSchema } = require("../../schemas/contacts")
+const { HttpError } = require("../../helpers")
 
 const updateById = async (req, res, next) => {
   try {

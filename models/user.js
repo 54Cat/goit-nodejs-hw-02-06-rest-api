@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi')
-// const { handleSchemaValidationErrors } = require('../helpers');
 
 const userSchema = new Schema({
   email: {
@@ -21,6 +20,10 @@ const userSchema = new Schema({
     type: String,
     default: null,
   },
+  avatarURL: {
+    type: String,
+    required: true,
+  }
 },
   {
     versionKey: false,

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Joi = require('joi')
-// const { handleSchemaValidationErrors } = require('../helpers');
+const subscriptions = ["starter", "pro", "business"]
 
 const userSchema = new Schema({
   email: {
@@ -14,7 +14,7 @@ const userSchema = new Schema({
   },
   subscription: {
     type: String,
-    enum: ["starter", "pro", "business"],
+    enum: subscriptions,
     default: "starter"
   },
   token: {
@@ -41,9 +41,14 @@ const loginSchema = Joi.object({
   token: Joi.boolean()
 })
 
+const subscriptionSchema = Joi.object({ 
+  subscription: Joi.string().valid(...subscriptions).required()
+})
+
 const userJoiSchemas = {
   singupSchema,
-  loginSchema
+  loginSchema,
+  subscriptionSchema
 }
 
 const User = model("user", userSchema)

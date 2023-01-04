@@ -14,8 +14,10 @@ router.post('/logout', auth, ctrlWrapper(ctrl.logout))
 
 router.get('/current', auth, ctrlWrapper(ctrl.getCurrent))
 
+router.patch('/', auth, validateBody(userJoiSchemas.subscriptionSchema), ctrlWrapper(ctrl.updateSubscription))
+
 router.patch('/avatars', auth, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar))
 
-router.patch('/verify/:verificationToken', ctrlWrapper(ctrl.verifyEmail))
+router.patch('/verify/:verificationToken', auth, ctrlWrapper(ctrl.verifyEmail))
 
 module.exports = router

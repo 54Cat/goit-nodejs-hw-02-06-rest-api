@@ -1,19 +1,20 @@
 const sgMail = require("@sendgrid/mail")
 require("dotenv").config()
 const { SENDGRID_KEY } = process.env
+const { HttpError } = require("../helpers")
 
 sgMail.setApiKey(SENDGRID_KEY)
 
 const sendEmail = async (data) => {
-    const email = { ...data, from: "katerynahrabanova@gmail.com" }
-
     try {
+        const email = { ...data, from: "katerynahrabanova@gmail.com" }
         await sgMail.send(email)
-        // return true;
+        console.log("email", email)
+        
+        return true
     }
-
     catch (error) {
-        // throw error;
+        throw HttpError(404, error.message)
     }
 }
 

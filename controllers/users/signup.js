@@ -16,12 +16,12 @@ const signup = async (req, res, next) => {
     verificationToken
   })
 
-  const mail = {
+  const verifyMail = {
     to: email,
     subject: "confirm your mail",
     html: `<a target="_blank"_ href="http://localhost:3000/api/users/verify/${verificationToken}">Confirm your mail</a>`
   }
-  await sendEmail(mail)
+  await sendEmail(verifyMail)
 
   res.status(201).json({
     email: newUser.email,

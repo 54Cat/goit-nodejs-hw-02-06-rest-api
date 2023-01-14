@@ -56,10 +56,15 @@ const subscriptionSchema = Joi.object({
   subscription: Joi.string().valid(...subscriptions).required()
 })
 
+const emailSchema = Joi.object({ 
+  email: Joi.string().email().required(),
+})
+
 const userJoiSchemas = {
   singupSchema,
   loginSchema,
-  subscriptionSchema
+  subscriptionSchema,
+  emailSchema
 }
 
 const User = model("user", userSchema)

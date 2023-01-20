@@ -1,7 +1,8 @@
 const bcrypt = require("bcryptjs")
 const { User } = require("../../models")
+const verifyMail = require("../../services/email/email")
 const gravatar = require("gravatar")
-const { sendEmail } = require("../../helpers")
+const { sendEmail } = require("../../services/email/sendEmail")
 const { nanoid } = require("nanoid")
 
 const signup = async (req, res, next) => {
@@ -16,12 +17,8 @@ const signup = async (req, res, next) => {
     verificationToken
   })
 
-  const verifyMail = {
-    to: email,
-    subject: "confirm your mail",
-    html: `<a target="_blank"_ href="http://localhost:3000/api/users/verify/${verificationToken}">Confirm your mail</a>`
-  }
-  await sendEmail(verifyMail)
+  console.log("verifyMail",verifyMail(email, verificationToken))
+  await sendEmail(verifyMail(email, verificationToken))
 
   res.status(201).json({
     email: newUser.email,

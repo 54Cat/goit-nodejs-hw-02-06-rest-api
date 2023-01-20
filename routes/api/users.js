@@ -9,9 +9,9 @@ const router = express.Router()
 // signup
 router.post('/signup', validateBody(userJoiSchemas.singupSchema), ctrlWrapper(ctrl.signup))
 
-router.patch('/verify/:verificationToken', auth, ctrlWrapper(ctrl.verifyEmail))
+router.get('/verify/:verificationToken', ctrlWrapper(ctrl.verifyEmail))
 
-router.post('/verify',validateBody(userJoiSchemas.emailSchema), ctrlWrapper(ctrl.resendVerifyEmail))
+router.post('/verify', validateBody(userJoiSchemas.emailSchema), ctrlWrapper(ctrl.resendVerifyEmail))
 
 // login
 router.post('/login', validateBody(userJoiSchemas.loginSchema), ctrlWrapper(ctrl.login))

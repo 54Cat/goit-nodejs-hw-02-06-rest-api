@@ -1,7 +1,7 @@
 const sgMail = require("@sendgrid/mail")
 require("dotenv").config()
 const { SENDGRID_KEY } = process.env
-const { HttpError } = require("../helpers")
+const { HttpError } = require("../../helpers")
 
 sgMail.setApiKey(SENDGRID_KEY)
 
@@ -9,8 +9,6 @@ const sendEmail = async (data) => {
     try {
         const email = { ...data, from: "katerynahrabanova@gmail.com" }
         await sgMail.send(email)
-        console.log("email", email)
-        
         return true
     }
     catch (error) {
@@ -18,4 +16,6 @@ const sendEmail = async (data) => {
     }
 }
 
-module.exports = sendEmail
+module.exports = {
+    sendEmail
+}

@@ -12,11 +12,13 @@ const resendVerifyEmail = async (req, res) => {
     throw HttpError(400, 'Verification has already been passed')
   }
     
-    const verifyMail = {
-      to: email,
-      subject: "confirm your mail",
-      html: `<a target="_blank"_ href="http://localhost:3000/api/users/verify/${user.verificationToken}">Confirm your mail</a>`
-    }
+  const verifyMail = {
+    to: email,
+    subject: "confirm your mail",
+    html: `<p><p>
+    <a target="_blank"_ href="http://localhost:3000/api/users/verify/${user.verificationToken}">Confirm your mail</a>
+    `
+  }
   await sendEmail(verifyMail)
 
   res.json({

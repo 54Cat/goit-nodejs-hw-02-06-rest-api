@@ -2,10 +2,12 @@ const validateBody = require("./validateBody")
 const isValidId = require("./isValidId")
 const auth = require("./auth")
 const upload = require("./upload")
+const passport = require("./passport")
 
 module.exports = {
     validateBody,
     isValidId,
     auth,
-    upload
+    upload,
+    passport
 }
